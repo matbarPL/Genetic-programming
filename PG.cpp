@@ -131,7 +131,7 @@ void CPG::vCrossover()
 	{
 		number = rand()% TRIES;
 		pair<CTree*, CTree*> p_tree = vpc_pairs[i];
-		if (number == d_cross_prob) 
+		if (number < d_cross_prob ) 
 		{
 			p_tree.first->vCrossover(p_tree.second);
 			vpc_descendents.push_back(new CTree(*p_tree.first));
@@ -153,7 +153,7 @@ void CPG::vMutate()
 	for (int i = 0; i < vpc_descendents.size(); i++)
 	{
 		number = rand()% TRIES;
-		if(number == d_mut_prob)
+		if(number < d_mut_prob)
 			vpc_descendents[i]->vMutate(to_string(mutate_option));
 	}
 }
